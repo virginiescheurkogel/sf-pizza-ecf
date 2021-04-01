@@ -5,6 +5,8 @@
 {% block body %}
     <h1>Pizza</h1>
 
+    <br><br>
+
     <table class="table">
         <tbody>
             <tr>
@@ -12,15 +14,38 @@
                 <td>{{ pizza.id }}</td>
             </tr>
             <tr>
-                <th>Pizza_name</th>
+                <th>Nom de la pizza</th>
                 <td>{{ pizza.pizzaName }}</td>
+            </tr>
+            <tr>
+                <th>Prix de la pizza</th>
+                <td>{{ pizza.pizzaPrice }} €</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('pizza_index') }}">back to list</a>
+    <br><br>
 
-    <a href="{{ path('pizza_edit', {'id': pizza.id}) }}">edit</a>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>INGREDIENTS :</th>
+            </tr>
+            {% for ingredient in pizza.pizzaIngredients %}
+                <tr>
+                    <td>
+                        {{ ingredient.ingredientName }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+
+    <a href="{{ path('pizza_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('pizza_edit', {'id': pizza.id}) }}">Modifier</a>
 
     {{ include('pizza/_delete_form.html.twig') }}
 {% endblock %}

@@ -9,8 +9,10 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Pizza_name</th>
-                <th>actions</th>
+                <th>Nom pizza</th>
+                <th>Prix pizza</th>
+                <th>Vegan/Végétarien</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -18,9 +20,11 @@
             <tr>
                 <td>{{ pizza.id }}</td>
                 <td>{{ pizza.pizzaName }}</td>
+                <td>{{ pizza.pizzaPrice }} €</td>
+                <td>{{ pizza.VeganOrVegetarian }}</td>
                 <td>
-                    <a href="{{ path('pizza_show', {'id': pizza.id}) }}">show</a>
-                    <a href="{{ path('pizza_edit', {'id': pizza.id}) }}">edit</a>
+                    <a href="{{ path('pizza_show', {'id': pizza.id}) }}">Détails</a>
+                    <a href="{{ path('pizza_edit', {'id': pizza.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

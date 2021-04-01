@@ -111,4 +111,47 @@ class Pizza
 
         return $this;
     }
+
+
+    public function getPizzaPrice(): float
+    {
+        $total = 0;
+
+        $total += $this->pizza_base->getBasePrice();
+        $total += $this->pizza_size->getSizePrice();
+
+        foreach ($this->pizza_ingredients as $ingredient){
+            $total += $ingredient->getIngredientPrice();
+        }
+
+        return $total;
+    }
+
+    public function VeganOrVegetarian(): string
+    {
+        $isVegan = true;
+        $isVegetarian = true;
+
+        foreach ($this->pizza_ingredients as $ingredient){
+            $vegan = $ingredient->getVegan();
+            $vegetarian = $ingredient->getVegetarian();
+
+            if ($vegan == false) {
+                $isVegan = false;
+            }
+            if ($vegetarian == false) {
+                $isVegetarian = false;
+            }
+        }
+
+        if ($isVegan == true) {
+            $result = "Végan";
+        } else if ($isVegetarian == true) {
+            $result = "Végétarienne";
+        } else {
+            $result = "";
+        }
+
+        return $result;
+    }
 }

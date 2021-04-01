@@ -127,6 +127,9 @@ class Pizza
         return $total;
     }
 
+
+
+
     public function VeganOrVegetarian(): string
     {
         $isVegan = true;

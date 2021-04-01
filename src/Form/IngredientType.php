@@ -15,12 +15,22 @@ class IngredientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ingredient_name', TextType::class, ["label" => "Nom de l'ingrédient"])
-            ->add('ingredient_price', NumberType::class, ["label" => "Prix de l'ingrédient"])
+            ->add('ingredient_name', TextType::class, [
+                "label" => "Nom de l'ingrédient",
+                "attr" => ["class" => "mb-4"]
+                ])
+            ->add('ingredient_price', NumberType::class, [
+                "label" => "Prix de l'ingrédient",
+                "attr" => ["class" => "mb-4"]
+                ])
             ->add('vegetarian', ChoiceType::class, [
+                "label" => "Végétarien",
+                "attr" => ["class" => "mb-4"],
                 "choices" => ["oui" => true, "non" => false]
             ])
             ->add('vegan', ChoiceType::class, [
+                "label" => "Végan",
+                "attr" => ["class" => "mb-4"],
                 "choices" => ["oui" => true, "non" => false]
                 ])
             //->add('pizzas')

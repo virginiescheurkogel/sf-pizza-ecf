@@ -3,36 +3,41 @@
 {% block title %}Ingredient{% endblock %}
 
 {% block body %}
-    <h1>Ingredient</h1>
+    <h1>Détails Ingredient</h1>
+
+    <br><br>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Id :</th>
                 <td>{{ ingredient.id }}</td>
             </tr>
             <tr>
-                <th>Ingredient_name</th>
+                <th>Nom :</th>
                 <td>{{ ingredient.ingredientName }}</td>
             </tr>
             <tr>
-                <th>Ingredient_price</th>
-                <td>{{ ingredient.ingredientPrice }}</td>
+                <th>Tarif :</th>
+                <td>{{ ingredient.ingredientPrice }} €</td>
             </tr>
             <tr>
-                <th>Vegetarian</th>
-                <td>{{ ingredient.vegetarian ? 'Yes' : 'No' }}</td>
+                <th>Végétarien :</th>
+                <td>{{ ingredient.vegetarian ? 'oui' : 'non' }}</td>
             </tr>
             <tr>
-                <th>Vegan</th>
-                <td>{{ ingredient.vegan ? 'Yes' : 'No' }}</td>
+                <th>Végan :</th>
+                <td>{{ ingredient.vegan ? 'oui' : 'non' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('ingredient_index') }}">back to list</a>
+    <!--<a href="{{ path('ingredient_index') }}">back to list</a>-->
 
-    <a href="{{ path('ingredient_edit', {'id': ingredient.id}) }}">edit</a>
 
-    {{ include('ingredient/_delete_form.html.twig') }}
+    <div class="flex">
+        <div><a href="{{ path('ingredient_edit', {'id': ingredient.id}) }}" class="btn btn-warning btn-block">Modifier</a></div>
+        {{ include('ingredient/_delete_form.html.twig') }}
+    </div>
+
 {% endblock %}

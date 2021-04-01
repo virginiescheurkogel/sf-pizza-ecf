@@ -3,17 +3,19 @@
 {% block title %}Ingredient index{% endblock %}
 
 {% block body %}
-    <h1>Ingredient index</h1>
+    <h1>Liste d'ingredients</h1>
+
+    <br>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Ingredient_name</th>
-                <th>Ingredient_price</th>
-                <th>Vegetarian</th>
-                <th>Vegan</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th>Tarif</th>
+                <th>Végétarien</th>
+                <th>Végan</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,12 +23,13 @@
             <tr>
                 <td>{{ ingredient.id }}</td>
                 <td>{{ ingredient.ingredientName }}</td>
-                <td>{{ ingredient.ingredientPrice }}</td>
-                <td>{{ ingredient.vegetarian ? 'Yes' : 'No' }}</td>
-                <td>{{ ingredient.vegan ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('ingredient_show', {'id': ingredient.id}) }}">show</a>
-                    <a href="{{ path('ingredient_edit', {'id': ingredient.id}) }}">edit</a>
+                <td>{{ ingredient.ingredientPrice }} €</td>
+                <td>{{ ingredient.vegetarian ? 'X' : '' }}</td>
+                <td>{{ ingredient.vegan ? 'X' : '' }}</td>
+                <td class="flex">
+                    <div><a href="{{ path('ingredient_show', {'id': ingredient.id}) }}" class="btn btn-success btn-block">Détails</a></div>
+                    <div><a href="{{ path('ingredient_edit', {'id': ingredient.id}) }}" class="btn btn-warning btn-block">Modifier</a></div>
+                    {{ include('ingredient/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -37,5 +40,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('ingredient_new') }}">Create new</a>
+    <a href="{{ path('ingredient_new') }}" class="btn btn-primary btn-block">AJOUTER UN NOUVEL INGREDIENT</a>
 {% endblock %}

@@ -3,23 +3,27 @@
 {% block title %}Pizza{% endblock %}
 
 {% block body %}
-    <h1>Pizza</h1>
+    <h1>Détails Pizza</h1>
 
     <br><br>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ pizza.id }}</td>
+                <th>Id :</th>
+                <td class="col-md-6">{{ pizza.id }}</td>
             </tr>
             <tr>
-                <th>Nom de la pizza</th>
-                <td>{{ pizza.pizzaName }}</td>
+                <th>Nom :</th>
+                <td class="col-md-6">{{ pizza.pizzaName }}</td>
             </tr>
             <tr>
-                <th>Prix de la pizza</th>
-                <td>{{ pizza.pizzaPrice }} €</td>
+                <th>Tarif :</th>
+                <td class="col-md-6">{{ pizza.pizzaPrice }} €</td>
+            </tr>
+            <tr>
+                <th>Taille :</th>
+                <td class="col-md-6">{{ pizza.pizzaSize.getSizeName() }}</td>
             </tr>
         </tbody>
     </table>
@@ -33,19 +37,25 @@
             </tr>
             {% for ingredient in pizza.pizzaIngredients %}
                 <tr>
-                    <td>
+                    <td class="col-md-6">
                         {{ ingredient.ingredientName }}
+                    </td>
+                    <td class="col-md-6">
+                        {{ ingredient.ingredientPrice }} €
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    <br><br>
+    <!--<a href="{{ path('pizza_index') }}">Retour à la liste</a>-->
 
-    <a href="{{ path('pizza_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('pizza_edit', {'id': pizza.id}) }}">Modifier</a>
+    <div class="flex">
+        <div><a href="{{ path('pizza_edit', {'id': pizza.id}) }}" class="btn btn-warning btn-block">Modifier</a></div>
 
-    {{ include('pizza/_delete_form.html.twig') }}
+        {{ include('pizza/_delete_form.html.twig') }}
+    </div>
+
+
 {% endblock %}

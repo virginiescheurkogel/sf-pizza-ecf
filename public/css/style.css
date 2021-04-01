@@ -1,3 +1,8 @@
+nav {
+    background-color: #FFBD33;
+}
+
+
 .nav-bar { /* ul */
     display: flex;
     flex-direction: row;
@@ -5,23 +10,36 @@
     padding: 6px 0 6px 1% ;
     margin: 0 5px 5px 5px;
     list-style-type: none;
+    justify-content: center;
     / background-color: rgb(233, 233, 233); /
 }
 
 .nav-link { /* ul li */
-    margin: 0 8px 8px 0;
+    margin: 0 80px 8px 0;
     padding: 5px 0 3px 0;
-    border: solid black 1px;
+    border: solid green 1px;
     border-radius: 2px;
     width: max-content;
     text-decoration : none;
-    box-shadow: -2px -2px 5px 0px black;
+    box-shadow: 2px 2px 5px 0px seagreen;
     background-color: rgba(160, 224, 176, 0.144);
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
 }
 
 .nav-link a{ /* ul li a */
     text-decoration : none;
-    color: blue;
-    padding: 3px;
-    font-weight: 600;
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex div {
+    margin-right: 10px;
 }
